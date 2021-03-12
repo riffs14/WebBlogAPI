@@ -1,0 +1,13 @@
+require('dotenv').config();
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+bodyParser = require('body-parser');
+var logger = require('morgan');
+var app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+require('./routes/api')(app, express);
+port = process.env.PORT || 3000;
+app.listen(port);
+console.log('Server started on: ' + port);
